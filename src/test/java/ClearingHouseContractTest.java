@@ -1,5 +1,5 @@
-import de.fraunhofer.iais.eis.LogNotification;
-import de.fraunhofer.iais.eis.LogNotificationBuilder;
+import de.fraunhofer.iais.eis.LogMessage;
+import de.fraunhofer.iais.eis.LogMessageBuilder;
 import it.eng.clearinghouse.chaincode.ClearingHouseContract;
 import it.eng.idsa.clearinghouse.model.Body;
 import it.eng.idsa.clearinghouse.model.NotificationContent;
@@ -49,7 +49,7 @@ public class ClearingHouseContractTest {
 
     static NotificationContent createNotificationContent() {
         Random rand = new Random();
-        LogNotification header = null;
+        LogMessage header = null;
         GregorianCalendar gcal = new GregorianCalendar();
         XMLGregorianCalendar xgcal = null;
         try {
@@ -57,7 +57,7 @@ public class ClearingHouseContractTest {
                     .newXMLGregorianCalendar(gcal);
             URI id = new URI("https://w3id.org/idsa/autogen/brokerQueryMessage/6bed5855-489b-4f47-82dc-08c5f1656101-" +
                     Math.abs(rand.nextInt(1000)));
-            header = new LogNotificationBuilder(id)
+            header = new LogMessageBuilder(id)
                     ._modelVersion_("1.0.3")
                     ._issued_(xgcal)
                     ._correlationMessage_(new URI("https://w3id.org/idsa/autogen/brokerQueryMessage/6bed5855-489b-4f47-82dc-08c5f1656101"))
