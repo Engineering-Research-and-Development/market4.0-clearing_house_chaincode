@@ -69,7 +69,8 @@ public final class ClearingHouseContract implements ContractInterface {
         List<byte[]> args = null;
         if (!debug)
             args = stub.getArgs();
-        NotificationContent deserializeLM = (NotificationContent) JsonHandler.convertFromJson(notification, NotificationContent.class);
+        NotificationContent deserializeLM = (NotificationContent) JsonHandler.convertFromJson
+                (TimezoneRemover.removeTimezoneFromIssued(notification), NotificationContent.class);
         final String id = deserializeLM.getHeader().getId().toString();
         String notificationState = "";
         if (!debug)
